@@ -2,8 +2,9 @@
 A Chrome and Firefox extension that help you to copy URL
 
 ## Install
-https://chrome.google.com/webstore/detail/simple-url-copy/cefkgjbbpagcilodnhboolbppdjlplip
-https://addons.mozilla.org/en-US/firefox/addon/simple-url-copy/
+Chrome: https://chrome.google.com/webstore/detail/simple-url-copy/cefkgjbbpagcilodnhboolbppdjlplip
+
+Firefox: https://addons.mozilla.org/en-US/firefox/addon/simple-url-copy/
 
 ## Features
 - Simple and Fast
