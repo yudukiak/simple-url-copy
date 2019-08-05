@@ -1,8 +1,8 @@
 ## Simple URL Copy
-A Chrome extension that help you to copy URL
+A Firefox extension that help you to copy URL
 
 ## Install
-https://chrome.google.com/webstore/detail/cefkgjbbpagcilodnhboolbppdjlplip
+https://addons.mozilla.org/en-US/firefox/addon/simple-url-copy/
 
 ## Features
 - Simple and Fast
@@ -12,4 +12,4 @@ https://chrome.google.com/webstore/detail/cefkgjbbpagcilodnhboolbppdjlplip
 - It can exclude query strings, and trim Japanese Amazon's verbose URL.
 
 ## Demo
-![demo](https://github.com/ikedaosushi/simple-url-copy/blob/master/assets/how_to_use.gif)
+![demo](https://github.com/Misoni64T/simple-url-copy/blob/master/assets/how_to_use.gif)
