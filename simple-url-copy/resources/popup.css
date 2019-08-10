@@ -86,7 +86,8 @@ footer {
 }
 
 #copy-textarea {
-    overflow: hidden;
+    scrollbar-color: #404040 #dedede;
+    scrollbar-width: thin;
     width: 100%;
     height: 80px;
 }
