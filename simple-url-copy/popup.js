@@ -43,6 +43,9 @@ const copyUrl = menuType => {
             case "onlyUrl":
                 text = `${url}`
                 break;
+            case "simpleBreak":
+                text = `${title}\n${url}`
+                break;
             case "simple":
                 text = `${title} ${url}`
                 break;
