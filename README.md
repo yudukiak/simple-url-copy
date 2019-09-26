@@ -11,7 +11,7 @@ Firefox: https://addons.mozilla.org/en-US/firefox/addon/simple-url-copy/
 - It can copy as markdown style.
 - It can copy as [Backlog](https://www.backlog.com/) style.
 - It can copy and open menu by shotcut(ctrl+shift+c)
-- It can exclude query strings, and trim Japanese Amazon's verbose URL.
+- It can exclude query strings, and trim Japanese Amazon's verbose URL(It may broken).
 
 ## Demo
 ![demo](https://github.com/Misoni64T/simple-url-copy/blob/master/assets/how_to_use.gif)
