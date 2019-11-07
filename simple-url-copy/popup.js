@@ -1,6 +1,3 @@
-
-const AMAZON_HOST = "www.amazon.co.jp";
-
 const copyText = text => {
     let copyTextArea = document.querySelector("#copy-textarea");
     copyTextArea.textContent = text;
@@ -32,41 +29,69 @@ const copyUrl = menuType => {
         // Process AmazonURL
         url = extractAmazonUrl(url);
 
-        let text;
-        switch (menuType) {
-            case "markdown":
-                text = `[${title}](${url})`
-                break;
-            case "backlog":
-                text = `[[${title}:${url}]]`
-                break;
-            case "onlyUrl":
-                text = `${url}`
-                break;
-            case "simpleBreak":
-                text = `${title}\n${url}`
-                break;
-            case "simple":
-                text = `${title} ${url}`
-                break;
-        }
+        const text = menuType
+          .replace(/\\n/g, '\n')
+          .replace(/\\r/g, '\r')
+          .replace(/\\f/g, '\f')
+          .replace(/\\t/g, '\t')
+          .replace(/{title}/g, title)
+          .replace(/{url}/g, url);
         copyText(text);
         showCopied();
     })
 }
 
 const onInit = _ => {
-    // First copy simple
-    copyUrl("simple");
-    document.querySelectorAll(".bettercopy-menu").forEach(el => {
-        el.addEventListener("click", onClickCopyMenu);
+    chrome.storage.local.get(value => {
+        const valueData = value['simpleUrlCopy'];
+        const settingAry = getSettingAry(valueData);
+        const menuType = settingAry[0][1];
+        copyUrl(menuType);
     });
 }
 
-
-const onClickCopyMenu = function (evt) {
-    const menuType = this.id;
+const onClickCopyMenu = elm => {
+    const menuType = elm.dataset.text;
     copyUrl(menuType);
 }
 
 document.addEventListener("DOMContentLoaded", onInit);
+
+const escapeHtml = str => {
+  const rep = str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  return rep;
+}
+const getSettingAry = ary => {
+  if (ary == null || ary.length === 0) return DEFAULT_SETTING;
+  return ary;
+}
+const getButtonHtml = ary => {
+  const buttonHtml = ary.map(val => {
+    const label = escapeHtml(val[0]);
+    const text = escapeHtml(val[1]);
+    const checked = (val[2]) ? 'checked' : '';
+    const html = BUTTON_HTML.replace(/{label}/g, label).replace(/{text}/g, text);
+    if (checked) return html;
+    return '';
+  }).join('');
+  return buttonHtml;
+}
+chrome.storage.local.get(value => {
+  const valueData = value['simpleUrlCopy'];
+  const settingAry = getSettingAry(valueData);
+  const buttonHtml = getButtonHtml(settingAry);
+  const menuElement = document.querySelector('#menu');
+  menuElement.innerHTML = buttonHtml;
+});
+document.querySelector('#menu').addEventListener('click', e => {
+  const target = e.target || e.srcElement;
+  if (target.localName === 'button') onClickCopyMenu(target);
+});
+document.getElementById('setting').onclick = _ => {
+  chrome.runtime.openOptionsPage()
+};

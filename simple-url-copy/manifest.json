@@ -13,6 +13,11 @@
     "default_popup": "popup.html",
     "default_icon": "icons/16.png"
   },
+  "options_page": "options.html",
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {

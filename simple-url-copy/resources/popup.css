@@ -35,8 +35,11 @@ main {
 footer {
     background-color: #0c0c0d;
     color: #f9f9fa;
-    padding: 10px;
     font-size: 12px;
+}
+
+footer p {
+    padding: 10px;
 }
 
 #menu {
@@ -87,4 +90,19 @@ footer {
     scrollbar-width: thin;
     width: 100%;
     height: 80px;
+}
+
+#setting {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#setting svg {
+  width: 14px;
+  height: 14px;
+  margin: 0 4px 0;
+  fill: var(--primary-text);
+  stroke: var(--primary-text);
 }
