@@ -12,6 +12,7 @@ URLをコピーするのに使えるChromeの拡張です。
 [![YouTube](https://img.youtube.com/vi/Gsq4jFGd-BY/mqdefault.jpg)](https://www.youtube.com/watch?v=Gsq4jFGd-BY)
 
 ## インストール
+[Simple URL Copy - Chrome ウェブストア](https://chrome.google.com/webstore/detail/simple-url-copy/kmkdfdfknlkjbmgdenhpeckpdafojnfo)
 
 ## 特徴
 - Simple and Fast
