@@ -1,7 +1,7 @@
 Simple URL Copy
 =====
 
-![demo](https://github.com/master/simple-url-copy/blob/master/assets/how_to_use.gif)
+![demo](https://raw.githubusercontent.com/micelle/simple-url-copy/master/assets/how_to_use.gif)
 
 URLをコピーするのに使えるChromeの拡張です。
 
@@ -32,7 +32,7 @@ URLをコピーするのに使えるChromeの拡張です。
 
 ### フォーマットの追加方法
 - 「Simple URL Copy」のウィンドウ内にある「Option」、もしくはアイコン右クリックから表示される「オプション」をクリックすることでOptionを開けます  
-  ![option](https://github.com/master/simple-url-copy/blob/master/assets/how_to_option.jpg)
+  ![option](https://raw.githubusercontent.com/micelle/simple-url-copy/master/assets/how_to_option.jpg)
 - 「RESET」ボタン  
   フォーマットの設定を初期化します。初期化後、設定が保存されますのでご注意ください。
 - 「ADD」ボタン  
