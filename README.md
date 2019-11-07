@@ -5,6 +5,12 @@ Simple URL Copy
 
 URLをコピーするのに使えるChromeの拡張です。
 
+## YouTube
+- 使い方  
+[![YouTube](https://img.youtube.com/vi/51qcKcOe-ls/mqdefault.jpg)](https://www.youtube.com/watch?v=51qcKcOe-ls)
+- Option  
+[![YouTube](https://img.youtube.com/vi/Gsq4jFGd-BY/mqdefault.jpg)](https://www.youtube.com/watch?v=Gsq4jFGd-BY)
+
 ## インストール
 
 ## 特徴
@@ -43,12 +49,6 @@ URLをコピーするのに使えるChromeの拡張です。
   フォーマットの並び替えは左側の十字をドラッグ＆ドロップで行えます。  
   enabledにチェックが入っていると有効、使用可能になります。  
   不要なフォーマットは右側の×印から行えます。
-
-## YouTube
-- 使い方  
-  [![YouTube](https://img.youtube.com/vi/51qcKcOe-ls/mqdefault.jpg)](https://www.youtube.com/watch?v=51qcKcOe-ls)
-- Option  
-  [![YouTube](https://img.youtube.com/vi/Gsq4jFGd-BY/mqdefault.jpg)](https://www.youtube.com/watch?v=Gsq4jFGd-BY)
 
 ## forked from
 - [ikedaosushi/simple-url-copy](https://github.com/ikedaosushi/simple-url-copy)
