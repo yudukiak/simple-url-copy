@@ -1,8 +1,8 @@
 {
   "name": "Simple URL Copy",
   "description": "A tool that helps you to copy url.",
-  "author": "@ikedaosushi and Misoni",
-  "version": "1.3.0",
+  "author": "@ikedaosushi, Misoni, and micelle",
+  "version": "1.4.0",
   "manifest_version": 2,
   "icons": {
     "16": "icons/16.png",
