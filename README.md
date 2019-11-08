@@ -1,4 +1,4 @@
-Simple URL Copy
+Simple URL Copy [F]
 =====
 
 ![demo](https://raw.githubusercontent.com/micelle/simple-url-copy/master/assets/how_to_use.gif)
@@ -12,7 +12,7 @@ URLをコピーするのに使えるChromeの拡張です。
 [![YouTube](https://img.youtube.com/vi/Gsq4jFGd-BY/mqdefault.jpg)](https://www.youtube.com/watch?v=Gsq4jFGd-BY)
 
 ## インストール
-[Simple URL Copy - Chrome ウェブストア](https://chrome.google.com/webstore/detail/simple-url-copy/kmkdfdfknlkjbmgdenhpeckpdafojnfo)
+[Simple URL Copy [F] - Chrome ウェブストア](https://chrome.google.com/webstore/detail/simple-url-copy/kmkdfdfknlkjbmgdenhpeckpdafojnfo)
 
 ## 特徴
 - Simple and Fast
