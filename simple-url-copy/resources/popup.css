@@ -42,6 +42,10 @@ footer p {
     padding: 10px;
 }
 
+input, textarea {
+  color: inherit;
+}
+
 #menu {
     margin-top: 20px;
     margin-bottom: 20px;
