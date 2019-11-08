@@ -23,6 +23,7 @@ const showCopied = _ => {
 
 const copyUrl = menuType => {
     chrome.tabs.query({ active: true, currentWindow: true, lastFocusedWindow: true }, function (tabs) {
+        if (tabs[0] == null) return; // DevToolsのエラー対策
         let url = tabs[0].url;
         const title = tabs[0].title;
 
