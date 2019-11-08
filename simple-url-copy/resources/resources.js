@@ -15,10 +15,10 @@ const AMAZON_HOST = 'www.amazon.co.jp';
 const TH_HTML =
   '<tr>' +
   '<th></th>' +
-  '<th>label</th>' +
-  '<th>text</th>' +
-  '<th>enabled</th>' +
-  '<th>delete</th>' +
+  '<th>ラベル</th>' +
+  '<th>フォーマット</th>' +
+  '<th>有効</th>' +
+  '<th>削除</th>' +
   '</tr>';
 
 const TD_HTML =

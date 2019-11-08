@@ -1,0 +1,368 @@
+:root {
+  overflow: hidden;
+  --red-00: #ffebee;
+  --red-10: #ffcdd2;
+  --red-20: #ef9a9a;
+  --red-30: #e57373;
+  --red-40: #ef5350;
+  --red-50: #f44336;
+  --red-60: #e53935;
+  --red-70: #d32f2f;
+  --red-80: #c62828;
+  --red-90: #b71c1c;
+  --blue-00: #e3f2fd;
+  --blue-10: #bbdefb;
+  --blue-20: #90caf9;
+  --blue-30: #64b5f6;
+  --blue-40: #42a5f5;
+  --blue-50: #2196f3;
+  --blue-60: #1e88e5;
+  --blue-70: #1976d2;
+  --blue-80: #1565c0;
+  --blue-90: #0d47a1;
+  --grey-00: #fafafa;
+  --grey-10: #f5f5f5;
+  --grey-20: #eeeeee;
+  --grey-30: #e0e0e0;
+  --grey-40: #bdbdbd;
+  --grey-50: #9e9e9e;
+  --grey-60: #757575;
+  --grey-70: #616161;
+  --grey-80: #424242;
+  --grey-90: #212121;
+  --black: #000000;
+  --white: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+  border-left: solid 1px var(--grey-30);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grey-40);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px var(--white);
+}
+
+* {
+  color: var(--grey-00);
+}
+
+body {
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Kaku Gothic Pro",
+    "游ゴシック Medium",
+    YuGothic,
+    YuGothicM,
+    Tahoma,
+    メイリオ,
+    Meiryo,
+    sans-serif;
+  width: 320px;
+}
+
+body.swal2-shown {
+  padding-right: 0 !important;
+}
+
+header, footer, main {
+  width: 100%;
+}
+
+header {
+  background-color: var(--grey-90);
+  padding: 20px;
+}
+
+main {
+  background-color: var(--grey-70);
+  padding: 20px;
+}
+
+footer {
+  background-color: var(--grey-90);
+  font-size: 14px;
+}
+
+footer p {
+  padding: 10px;
+}
+
+footer p+p {
+  padding-top: 0;
+  font-size: 10px;
+}
+
+a {
+  color: var(--blue-50);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+button {
+  border-radius: 2px;
+  border-style: none;
+  margin: 0;
+  outline-style: none;
+  padding: 0 8px;
+  height: 32px;
+  width: auto;
+  min-width: 132px;
+}
+
+button {
+  background-color: var(--grey-90);
+}
+
+button:hover {
+  background-color: var(--grey-80);
+}
+
+button:active {
+  background-color: var(--grey-70);
+}
+
+button:focus {
+  box-shadow: 0 0 0 0.1rem var(--grey-40);
+}
+
+button:disabled {
+  opacity: 0.4;
+}
+
+button.primary-button {
+  background-color: var(--blue-60);
+}
+
+button.primary-button:hover {
+  background-color: var(--blue-80);
+}
+
+button.primary-button:active {
+  background-color: var(--blue-90);
+}
+
+button.primary-button:focus {
+  box-shadow: 0 0 0 0.1rem var(--blue-30);
+}
+
+button.warning-button {
+  background-color: var(--red-60);
+}
+
+button.warning-button:hover {
+  background-color: var(--red-80);
+}
+
+button.warning-button:active {
+  background-color: var(--red-90);
+}
+
+button.warning-button:focus {
+  box-shadow: 0 0 0 0.1rem var(--red-30);
+}
+
+button.circle-button {
+  border-radius: 50%;
+  width: 32px;
+  min-width: 32px;
+}
+
+kbd {
+  background-color: var(--grey-10);
+  border: 1px solid var(--grey-50);
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 var(--grey-40);
+  color: var(--grey-80);
+  display: inline-block;
+  font-size: 10px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+svg {
+  fill: var(--grey-00);
+  stroke: var(--grey-00);
+}
+
+table {
+  border: 0;
+  border-collapse: collapse;
+  width: 580px;
+}
+
+tr {
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid var(--grey-00);
+  text-align: center;
+}
+
+th {
+  background-color: var(--grey-90);
+  padding: 6px;
+}
+
+td {
+  min-width: 40px;
+}
+
+td > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+td svg {
+  cursor: pointer;
+  margin: 0 auto;
+  height: 12px;
+  width: 12px;
+}
+
+td[data-list="move"] {
+  height: 32px;
+  width: 32px;
+  min-width: 32px;
+}
+
+td[data-list="move"] svg {
+  cursor: move;
+  height: 24px;
+  width: 24px;
+}
+
+input {
+  padding: 6px;
+  width: 100%;
+}
+
+input[type="text"] {
+  height: 100%;
+}
+
+textarea {
+  border-color: var(--grey-50);
+  border-radius: 2px;
+  border-style: solid;
+  outline: none;
+  padding: 2px 8px;
+  resize: none;
+  width: auto;
+}
+
+textarea:focus {
+  box-shadow: 0 0 0 0.1rem var(--grey-30);
+}
+
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+#menu button {
+  margin: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#info {
+  display: flex;
+}
+
+#shortcutInfo {
+  width: 70%;
+}
+
+#shortcutInfo p {
+  padding: 5px 0;
+}
+
+#shortcutInfo p+p {
+  padding-top: 0;
+}
+
+#copied {
+  background-color: var(--grey-30);
+  border-radius: 4px;
+  color: var(--grey-90);
+  font-size: 14px;
+  height: 32px;
+  line-height: 16px;
+  margin: 15px 0 0 0;
+  opacity: 1;
+  padding: 9px;
+  text-align: center;
+  transition-property: opacity;
+  transition-duration: 0s;
+  width: 30%;
+}
+
+#copied.fadeout {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#copy-textarea {
+  height: 80px;
+  width: 100%;
+}
+
+#DevToolsOpened {
+  margin-top: 20px;
+  width: 100%;
+}
+
+#setting {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#setting svg {
+  margin: 0 4px 0;
+  height: 14px;
+  width: 14px;
+}
+
+.d-none {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.swal2-actions button {
+  height: 43px;
+}
+
+.unchecked {
+  background-color: var(--grey-90);
+}
