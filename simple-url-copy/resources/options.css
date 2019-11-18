@@ -6,6 +6,14 @@ body {
   width: 100%
 }
 
+main>div {
+  margin-top: 20px;
+}
+
+main>div:first-child {
+  margin-top: 0;
+}
+
 #menu {
   margin-top: 0;
 }

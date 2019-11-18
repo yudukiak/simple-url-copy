@@ -266,7 +266,7 @@ textarea {
   outline: none;
   padding: 2px 8px;
   resize: none;
-  width: auto;
+  width: 100%;
 }
 
 textarea:focus {

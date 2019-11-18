@@ -108,6 +108,67 @@ document.getElementById('save').onclick = _ => {
     });
   });
 };
+document.getElementById('export').onclick = _ => {
+  chrome.storage.local.get(value => {
+    const valueData = value['simpleUrlCopy'];
+    const settingAry = getSettingAry(valueData);
+    const textarea = document.createElement('textarea');
+    textarea.textContent = JSON.stringify(settingAry);
+    const body = document.getElementsByTagName('body')[0];
+    body.appendChild(textarea);
+    textarea.select();
+    const res = document.execCommand('copy');
+    body.removeChild(textarea);
+    if (!res) return;
+    Swal.fire({
+      title: '設定のコピーをしました',
+      onAfterClose: () => {
+        document.activeElement.blur();
+      }
+    });
+  });
+};
+document.getElementById('import').onclick = _ => {
+  Swal.fire({
+    title: '設定をインポートします',
+    text: 'JSONを記入してください',
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off',
+      autocorrect: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'インポートする',
+    preConfirm: (json) => {
+      try {
+        const ary = JSON.parse(json);
+        if (toString.call(ary) === '[object Array]') {
+          if (ary.length > 0 && ary[0].length === 3) {
+            return ary;
+          } else {
+            Swal.showValidationMessage('JSONの形式が異なります');
+          }
+        } else {
+          Swal.showValidationMessage('JSONを入力してください');
+        }
+      } catch (e) {
+        Swal.showValidationMessage(`JSONを入力してください<br>${e}`);
+      }
+    },
+    allowOutsideClick: () => !Swal.isLoading()
+  }).then(result => {
+    if (!result.value) return;
+    const valueData = result.value;
+    const settingAry = getSettingAry(valueData);
+    const tbodyHtml = getTbodyHtml(settingAry);
+    const tableElement = document.querySelector('#menu > table');
+    tableElement.innerHTML = tbodyHtml;
+    setSortable();
+    setMakeButtonColor('primary');
+  });
+};
 document.querySelector('#menu > table').addEventListener('change', e => {
   const target = e.target || e.srcElement;
   console.log('target', target.checked);
