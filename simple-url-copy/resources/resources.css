@@ -267,6 +267,9 @@ textarea {
   padding: 2px 8px;
   resize: none;
   width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 textarea:focus {
