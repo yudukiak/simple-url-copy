@@ -93,6 +93,9 @@ document.getElementById('save').onclick = _ => {
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
     confirmButtonText: '保存します',
+    onAfterClose: () => {
+      document.activeElement.blur();
+    }
   }).then(result => {
     if (!result.value) return;
     chrome.storage.local.set({
@@ -158,7 +161,10 @@ document.getElementById('import').onclick = _ => {
         Swal.showValidationMessage(`JSONを入力してください<br>${h}`);
       }
     },
-    allowOutsideClick: () => !Swal.isLoading()
+    allowOutsideClick: () => !Swal.isLoading(),
+    onAfterClose: () => {
+      document.activeElement.blur();
+    }
   }).then(result => {
     if (!result.value) return;
     const valueData = result.value;
@@ -198,6 +204,9 @@ document.querySelector('#menu > table').addEventListener('click', e => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: '削除します',
+      onAfterClose: () => {
+        document.activeElement.blur();
+      }
     }).then(result => {
       if (!result.value) return;
       tr.parentNode.removeChild(tr);
