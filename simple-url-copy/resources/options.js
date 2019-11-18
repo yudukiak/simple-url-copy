@@ -65,18 +65,7 @@ document.getElementById('reset').onclick = _ => {
     const tbodyHtml = getTbodyHtml(settingAry);
     const tableElement = document.querySelector('#menu > table');
     tableElement.innerHTML = tbodyHtml;
-    chrome.storage.local.set({
-      'simpleUrlCopy': settingAry
-    }, () => {
-      setSortable();
-      setMakeButtonColor('');
-      Swal.fire({
-        title: '設定の初期化が完了しました',
-        onAfterClose:  () => {
-          document.activeElement.blur();
-        }
-      });
-    });
+    setMakeButtonColor('primary');
   });
 };
 document.getElementById('add').onclick = _ => {
