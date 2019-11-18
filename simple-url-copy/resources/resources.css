@@ -54,6 +54,7 @@
 }
 
 body {
+  background-color: var(--grey-70);
   font-family:
     "Hiragino Kaku Gothic ProN",
     "Hiragino Kaku Gothic Pro",
@@ -64,6 +65,7 @@ body {
     メイリオ,
     Meiryo,
     sans-serif;
+  margin: 0 auto;
   width: 320px;
 }
 
