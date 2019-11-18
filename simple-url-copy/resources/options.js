@@ -86,15 +86,25 @@ document.getElementById('save').onclick = _ => {
     const checked = elm.querySelector('[name="enabled"]').checked;
     return [label, text, checked];
   }).filter(v => v);
-  chrome.storage.local.set({
-    'simpleUrlCopy': tableRowsAry
-  }, () => {
-    setMakeButtonColor('');
-    Swal.fire({
-      title: '設定の保存が完了しました',
-      onAfterClose:  () => {
-        document.activeElement.blur();
-      }
+  Swal.fire({
+    title: '設定を保存します',
+    text: 'よろしいですか？',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '保存します',
+  }).then(result => {
+    if (!result.value) return;
+    chrome.storage.local.set({
+      'simpleUrlCopy': tableRowsAry
+    }, () => {
+      setMakeButtonColor('');
+      Swal.fire({
+        title: '設定の保存が完了しました',
+        onAfterClose: () => {
+          document.activeElement.blur();
+        }
+      });
     });
   });
 };
