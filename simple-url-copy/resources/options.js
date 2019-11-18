@@ -55,7 +55,7 @@ document.getElementById('reset').onclick = _ => {
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: '初期化します', // Yes, factory reset!
+    confirmButtonText: '初期化します',
     onAfterClose: () => {
       document.activeElement.blur();
     }
@@ -172,14 +172,11 @@ document.getElementById('import').onclick = _ => {
 };
 document.querySelector('#menu > table').addEventListener('change', e => {
   const target = e.target || e.srcElement;
-  console.log('target', target.checked);
   if (target.localName === 'input') setMakeButtonColor('primary');
   if (target.type === 'checkbox' && !target.checked) {
     target.parentNode.parentNode.className = 'unchecked';
-    console.log('iro', target.parentNode.parentNode);
   } else if (target.type === 'checkbox' && target.checked) {
     target.parentNode.parentNode.className = '';
-    console.log('test', target.parentNode.parentNode);
   }
 });
 document.querySelector('#menu > table').addEventListener('click', e => {
@@ -200,12 +197,11 @@ document.querySelector('#menu > table').addEventListener('click', e => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: '削除します', // Yes, delete it!
+      confirmButtonText: '削除します',
     }).then(result => {
       if (!result.value) return;
       tr.parentNode.removeChild(tr);
       setMakeButtonColor('primary');
-      //Swal.fire('削除が完了しました');
     });
   }
 });
