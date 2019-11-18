@@ -56,7 +56,7 @@ document.getElementById('reset').onclick = _ => {
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
     confirmButtonText: '初期化します', // Yes, factory reset!
-    onAfterClose:  () => {
+    onAfterClose: () => {
       document.activeElement.blur();
     }
   }).then(result => {
