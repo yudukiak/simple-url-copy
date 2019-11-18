@@ -347,6 +347,10 @@ textarea:focus {
   width: 14px;
 }
 
+#swal2-content {
+  color: var(--grey-80);
+}
+
 .d-none {
   display: none;
 }
