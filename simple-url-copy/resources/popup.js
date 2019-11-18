@@ -1,65 +1,69 @@
 const copyText = text => {
-    let copyTextArea = document.querySelector("#copy-textarea");
-    copyTextArea.textContent = text;
-    copyTextArea.select();
-    document.execCommand('copy');
+  let copyTextArea = document.querySelector("#copy-textarea");
+  copyTextArea.textContent = text;
+  copyTextArea.select();
+  document.execCommand('copy');
 }
 
 const extractAmazonUrl = rawUrl => {
-    const url = new URL(rawUrl);
-    if (url.host == AMAZON_HOST && url.pathname.match(/\/dp\/[A-Za-z0-9]/)) {
-        newUrl = url.origin + url.pathname.replace(/(^\S+)(\/dp\/[A-Za-z0-9]{10})(.*)/, '$2');
-        return newUrl;
-    } else {
-        return rawUrl;
-    }
+  const url = new URL(rawUrl);
+  if (url.host == AMAZON_HOST && url.pathname.match(/\/dp\/[A-Za-z0-9]/)) {
+    newUrl = url.origin + url.pathname.replace(/(^\S+)(\/dp\/[A-Za-z0-9]{10})(.*)/, '$2');
+    return newUrl;
+  } else {
+    return rawUrl;
+  }
 }
 
 const showCopied = _ => {
-    let copied = document.querySelector("#copied");
-    copied.classList.remove("fadeout");
-    setTimeout(_ => copied.classList.add("fadeout"), 300);
+  let copied = document.querySelector("#copied");
+  copied.classList.remove("fadeout");
+  setTimeout(_ => copied.classList.add("fadeout"), 300);
 }
 
 const copyUrl = menuType => {
-    chrome.tabs.query({ active: true, currentWindow: true, lastFocusedWindow: true }, function (tabs) {
-        // DevToolsのエラー対策
-        if (tabs[0] == null) {
-          document.querySelector("#DevToolsOpened").classList.remove("d-none");
-          return;
-        } else {
-          document.querySelector("#DevToolsOpened").classList.add("d-none");
-        }
-        let url = tabs[0].url;
-        const title = tabs[0].title;
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true,
+    lastFocusedWindow: true
+  }, function(tabs) {
+    // DevToolsのエラー対策
+    if (tabs[0] == null) {
+      document.querySelector("#DevToolsOpened").classList.remove("d-none");
+      return;
+    } else {
+      document.querySelector("#DevToolsOpened").classList.add("d-none");
+    }
+    let url = tabs[0].url;
+    const title = tabs[0].title;
 
-        // Process AmazonURL
-        url = extractAmazonUrl(url);
+    // Process AmazonURL
+    url = extractAmazonUrl(url);
 
-        const text = menuType
-          .replace(/\\n/g, '\n')
-          .replace(/\\r/g, '\r')
-          .replace(/\\f/g, '\f')
-          .replace(/\\t/g, '\t')
-          .replace(/{title}/g, title)
-          .replace(/{url}/g, url);
-        copyText(text);
-        showCopied();
-    })
+    const text = menuType
+      .replace(/\\n/g, '\n')
+      .replace(/\\r/g, '\r')
+      .replace(/\\f/g, '\f')
+      .replace(/\\t/g, '\t')
+      .replace(/{title}/g, title)
+      .replace(/{url}/g, url);
+    copyText(text);
+    showCopied();
+  })
 }
 
 const onInit = _ => {
-    chrome.storage.local.get(value => {
-        const valueData = value['simpleUrlCopy'];
-        const settingAry = getSettingAry(valueData);
-        const menuType = settingAry[0][1];
-        copyUrl(menuType);
-    });
+  chrome.storage.local.get(value => {
+    const valueData = value['simpleUrlCopy'];
+    const settingAry = getSettingAry(valueData);
+    const menuType = settingAry[0][1];
+    copyUrl(menuType);
+  });
 }
 
 const onClickCopyMenu = elm => {
-    const menuType = elm.dataset.text;
-    copyUrl(menuType);
+  const menuType = elm.dataset.text;
+  copyUrl(menuType);
 }
 
 document.addEventListener("DOMContentLoaded", onInit);

@@ -154,7 +154,8 @@ document.getElementById('import').onclick = _ => {
           Swal.showValidationMessage('JSONを入力してください');
         }
       } catch (e) {
-        Swal.showValidationMessage(`JSONを入力してください<br>${e}`);
+        const h = escapeHtml(e);
+        Swal.showValidationMessage(`JSONを入力してください<br>${h}`);
       }
     },
     allowOutsideClick: () => !Swal.isLoading()
