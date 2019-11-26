@@ -24,14 +24,14 @@ const getTbodyHtml = ary => {
       .replace(/{trClassName}/g, trClassName);
     return html;
   }).join('');
-  return `<tbody>${TH_HTML}${tdHtml}</tbody>`;
+  return `<tbody>${TH_HTML}</tbody><tbody>${tdHtml}</tbody>`;
 }
 const setMakeButtonColor = color => {
   const colorName = (color == null || color === '') ? 'secondary' : color;
   document.getElementById('save').className = `${colorName}-button`;
 }
 const setSortable = _ => {
-  let sortable = Sortable.create(document.querySelector('#menu > table > tbody'), {
+  const sortable = Sortable.create(document.querySelector('#menu > table > tbody:last-child'), {
     group: 'list',
     handle: '[data-list="move"]',
     animation: 100,
@@ -65,7 +65,7 @@ document.getElementById('reset').onclick = _ => {
   });
 };
 document.getElementById('add').onclick = _ => {
-  const tbodyElement = document.querySelector('#menu > table > tbody');
+  const tbodyElement = document.querySelector('#menu > table > tbody:last-child');
   const html = TD_HTML.replace(/{(label|text|checked)}/g, '').replace(/{trClassName}/g, 'unchecked');
   const dummyElement = document.createElement('tbody');
   dummyElement.innerHTML = html;
