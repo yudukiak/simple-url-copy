@@ -53,12 +53,8 @@ document.getElementById('reset').onclick = _ => {
     title: '設定を初期化します',
     text: 'よろしいですか？',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
     confirmButtonText: '初期化します',
-    onAfterClose: () => {
-      document.activeElement.blur();
-    }
+    onAfterClose: () => document.activeElement.blur()
   }).then(result => {
     if (!result.value) return;
     const settingAry = getSettingAry();
@@ -90,8 +86,6 @@ document.getElementById('save').onclick = _ => {
     title: '設定を保存します',
     text: 'よろしいですか？',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
     confirmButtonText: '保存します',
     onAfterClose: () => {
       document.activeElement.blur();
@@ -104,9 +98,7 @@ document.getElementById('save').onclick = _ => {
       setMakeButtonColor('');
       Swal.fire({
         title: '設定の保存が完了しました',
-        onAfterClose: () => {
-          document.activeElement.blur();
-        }
+        onAfterClose: () => document.activeElement.blur()
       });
     });
   });
@@ -125,9 +117,7 @@ document.getElementById('export').onclick = _ => {
     if (!res) return;
     Swal.fire({
       title: '設定のコピーをしました',
-      onAfterClose: () => {
-        document.activeElement.blur();
-      }
+      onAfterClose: () => document.activeElement.blur()
     });
   });
 };
@@ -141,8 +131,6 @@ document.getElementById('import').onclick = _ => {
       autocorrect: 'off'
     },
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
     confirmButtonText: 'インポートする',
     preConfirm: (json) => {
       try {
@@ -162,9 +150,7 @@ document.getElementById('import').onclick = _ => {
       }
     },
     allowOutsideClick: () => !Swal.isLoading(),
-    onAfterClose: () => {
-      document.activeElement.blur();
-    }
+    onAfterClose: () => document.activeElement.blur()
   }).then(result => {
     if (!result.value) return;
     const valueData = result.value;
@@ -201,12 +187,7 @@ document.querySelector('#menu > table').addEventListener('click', e => {
       title: `「${label}」\nを削除します`,
       text: 'よろしいですか？',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
       confirmButtonText: '削除します',
-      onAfterClose: () => {
-        document.activeElement.blur();
-      }
     }).then(result => {
       if (!result.value) return;
       tr.parentNode.removeChild(tr);
