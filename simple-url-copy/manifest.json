@@ -18,19 +18,37 @@
     "page": "options.html",
     "open_in_tab": false
   },
+  "background": {
+     "page": "background.html",
+     "persistent": true
+  },
   "commands": {
-    "_execute_browser_action": {
+    "markdown_style_copy": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+M",
+        "mac": "MacCtrl+Shift+M"
+      },
+      "description": "Copy title and url by Markdown style"
+    },
+    "scrapbox_style_copy": {
       "suggested_key": {
         "default": "Ctrl+Shift+K",
+        "mac": "MacCtrl+Shift+S"
+      },
+      "description": "Copy title and url by Scrapbox style"
+    },
+    "default_style_copy": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+C",
         "mac": "MacCtrl+Shift+C"
       },
-      "description": "Opens popup.html"
+      "description": "Copy title and url by Default style"
     }
   },
   "permissions": [
     "storage",
     "tabs",
-    "clipboardWrite"
+    "clipboardWrite", "http://*/", "https://*/"
   ],
   "content_security_policy": "default-src 'self'",
   "devtools_page": "popup.html"
