@@ -15,12 +15,14 @@ const getTbodyHtml = ary => {
   const tdHtml = ary.map(val => {
     const label = escapeHtml(val[0]);
     const text = escapeHtml(val[1]);
+    const key = val[3] ? val[3] : '';
     const checked = (val[2]) ? 'checked' : '';
     const trClassName = (val[2]) ? '' : 'unchecked';
     const html = TD_HTML
       .replace(/{label}/g, label)
       .replace(/{text}/g, text)
       .replace(/{checked}/g, checked)
+      .replace(/{key}/g, key)
       .replace(/{trClassName}/g, trClassName);
     return html;
   }).join('');
@@ -80,7 +82,8 @@ document.getElementById('save').onclick = _ => {
     const label = labelElm.value;
     const text = elm.querySelector('[name="text"]').value;
     const checked = elm.querySelector('[name="enabled"]').checked;
-    return [label, text, checked];
+    const key = elm.querySelector('[name="key"]').value;
+    return [label, text, checked, key];
   }).filter(v => v);
   Swal.fire({
     title: '設定を保存します',
