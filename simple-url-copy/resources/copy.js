@@ -32,10 +32,10 @@ function parseFormat(format, values, tab, sendRequest, callback)
     callback(unescape(format));
 }
 
-const execCopy = (command) => {
-  console.log(`onCommand ${command}`);
-  let format = formatByCommand(command);
-
+const execCopy = (format) => {
+  // console.log(`onCommand ${command}`);
+  // let format = formatByCommand(command);
+  //
   const text = '';
   const values = {
             url: document.URL,
