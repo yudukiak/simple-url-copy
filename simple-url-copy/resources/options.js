@@ -139,7 +139,7 @@ document.getElementById('import').onclick = _ => {
       try {
         const ary = JSON.parse(json);
         if (toString.call(ary) === '[object Array]') {
-          if (ary.length > 0 && ary[0].length === 3) {
+          if (ary.length > 0 && ary[0].length === 4) {
             return ary;
           } else {
             Swal.showValidationMessage('JSONの形式が異なります');
