@@ -17,3 +17,21 @@ const extractAmazonUrl = rawUrl => {
     return rawUrl;
   }
 }
+
+const formatText = (format, title, base_url) => {
+  const url = extractAmazonUrl(base_url);
+  let decoded = url;
+  try {
+    decoded = decodeURI(decoded);
+  } catch (e) { // catches a malformed URI
+    console.error(e);
+  }
+  return format
+    .replace(/\\n/g, '\n')
+    .replace(/\\r/g, '\r')
+    .replace(/\\f/g, '\f')
+    .replace(/\\t/g, '\t')
+    .replace(/{title}/g, title)
+    .replace(/{url}/g, url)
+    .replace(/{durl}/g, decoded);
+}

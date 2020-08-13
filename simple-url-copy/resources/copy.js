@@ -1,24 +1,5 @@
 const copyUrl = (format) => {
-  const url = extractAmazonUrl(document.URL);
-  const title = document.title;
-  let decoded = url;
-  try {
-    decoded = decodeURI(decoded);
-  } catch (e) { // catches a malformed URI
-    console.error(e);
-  }
-
-  const text = format
-    .replace(/\\n/g, '\n')
-    .replace(/\\r/g, '\r')
-    .replace(/\\f/g, '\f')
-    .replace(/\\t/g, '\t')
-    .replace(/{title}/g, title)
-    .replace(/{url}/g, url)
-    .replace(/{durl}/g, decoded);
-  copyToClipBoard(text);
-  // copyText(text);
-  // showCopied();
+  copyToClipBoard(formatText(format,document.title,document.URL));
 };
 
 function copyToClipBoard(text)

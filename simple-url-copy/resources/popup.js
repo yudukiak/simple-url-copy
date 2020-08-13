@@ -24,20 +24,7 @@ const copyUrl = menuType => {
     } else {
       document.querySelector("#DevToolsOpened").classList.add("d-none");
     }
-    let url = tabs[0].url;
-    const title = tabs[0].title;
-
-    // Process AmazonURL
-    url = extractAmazonUrl(url);
-
-    const text = menuType
-      .replace(/\\n/g, '\n')
-      .replace(/\\r/g, '\r')
-      .replace(/\\f/g, '\f')
-      .replace(/\\t/g, '\t')
-      .replace(/{title}/g, title)
-      .replace(/{url}/g, url);
-    copyText(text);
+    copyText(formatText(menuType,tabs[0].title,tabs[0].url));
     showCopied();
   })
 }
