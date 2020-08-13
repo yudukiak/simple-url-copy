@@ -2,7 +2,7 @@
   "name": "Custom URL Copy",
   "description": "A tool that helps you to copy url and title.",
   "author": "@koyopro",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "manifest_version": 2,
   "icons": {
     "16": "icons/16.png",
@@ -29,29 +29,6 @@
      ],
      "matches": [ "http://*/*", "https://*/*" ]
   } ],
-  "commands": {
-    "markdown_style_copy": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+M",
-        "mac": "MacCtrl+Shift+M"
-      },
-      "description": "Copy title and url by Markdown style"
-    },
-    "scrapbox_style_copy": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+K",
-        "mac": "MacCtrl+Shift+S"
-      },
-      "description": "Copy title and url by Scrapbox style"
-    },
-    "default_style_copy": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+C",
-        "mac": "MacCtrl+Shift+C"
-      },
-      "description": "Copy title and url by Default style"
-    }
-  },
   "permissions": [
     "storage",
     "tabs",
