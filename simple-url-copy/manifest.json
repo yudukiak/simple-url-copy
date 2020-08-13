@@ -18,6 +18,10 @@
     "page": "options.html",
     "open_in_tab": false
   },
+  "content_scripts": [ {
+     "js": [ "resources/copy.js", "resources/content.js" ],
+     "matches": [ "http://*/*", "https://*/*" ]
+  } ],
   "background": {
      "page": "background.html",
      "persistent": true
@@ -46,6 +50,8 @@
     }
   },
   "permissions": [
+    "storage",
+    "tabs",
     "clipboardWrite"
   ],
   "content_security_policy": "default-src 'self'",

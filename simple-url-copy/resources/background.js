@@ -95,6 +95,11 @@ function init()
 {
     // chrome.extension.onRequest.addListener(onRequest);
     chrome.commands.onCommand.addListener(onCommand);
+    // document.onkeydown = keyDownEventListener;
+    // document.onkeyup = keyUpEventListener;
+    // document.onkeyup = (key) => {
+    //   console.log(`onkeyup: ${key}`);
+    // };
 }
 
 // do initialization once the DOM has fully loaded
