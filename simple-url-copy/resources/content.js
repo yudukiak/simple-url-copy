@@ -5,10 +5,10 @@ var tooltip = {
 
     create: function () {
         this.element = document.createElement('div');
-        this.element.setAttribute('style', 'position: fixed; top: 0; left: 0; width: 100%; text-align: center; min-height: 1.5em; z-index: 9999;');
+        this.element.setAttribute('style', 'position: fixed; top: 5px; left: 5px; width: calc(100%-10px); text-align: center; min-height: 1.5em; z-index: 9999;');
 
         var div = document.createElement('div');
-        div.setAttribute('style', 'font: bold 13px "Gill Sans", "Gill Sans MT", "Goudy Bookletter 1911", "Linux Libertine O", "Liberation Serif", Candara, serif; padding: 2px 15px; margin-top: 0; background: black; border-color: white; color: white; text-align: center; border-left: 1px solid; border-right: 1px solid; border-bottom: 1px solid; border-top: 0; border-radius: 0 0 5px 5px; display: inline-block; line-height: 100%;');
+        div.setAttribute('style', 'font: bold 13px "Gill Sans", "Gill Sans MT", "Goudy Bookletter 1911", "Linux Libertine O", "Liberation Serif", Candara, serif; padding: 2px 15px; margin-top: 0; background: gray; border-color: white; color: white; text-align: center; border-left: 1px solid; border-right: 1px solid; border-bottom: 1px solid; border-top: 0; border-radius: 0 0 5px 5px; display: inline-block; line-height: 100%;');
 
         this.element.appendChild(div);
     },
@@ -112,26 +112,14 @@ function keyUpEventListener(e)
     console.log(`key: ${keystr}, text: ${text}`);
     getSettingByKey(keystr, setting => {
       if (setting) {
-        copyUrl(setting.format);
-        console.log(`format: ${setting.format}`);
+        const text = copyUrl(setting.format);
+        tooltip.setText(`Copied!: ${text}`);
+        tooltip.show(1500);
       }
     });
-    // var format = getEnabledFormatByKey(keystr);
-    // console.log(`format: ${format}`);
-    // if (format) copyUrl(format);
-    // chrome.extension.sendRequest(
-    //     {
-    //         keystr: keystr,
-    //         values: {
-    //             url: document.URL,
-    //             title: document.title,
-    //             text: text
-    //         }
-    //     }
-    // );
 }
 const init = () => {
-  console.log('content');
+  tooltip.create();
   window.addEventListener("keydown", keyDownEventListener);
   window.addEventListener("keyup", keyUpEventListener);
 };

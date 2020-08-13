@@ -1,5 +1,7 @@
 const copyUrl = (format) => {
-  copyToClipBoard(formatText(format,document.title,document.URL));
+  const text = formatText(format,document.title,document.URL);
+  copyToClipBoard(text);
+  return text;
 };
 
 function copyToClipBoard(text)
