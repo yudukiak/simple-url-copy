@@ -112,7 +112,12 @@ function keyUpEventListener(e)
     console.log(`key: ${keystr}, text: ${text}`);
     var format = getEnabledFormatByKey(keystr);
     console.log(`format: ${format}`);
-    if (format) execCopy(format);
+    // if (format) execCopy(format);
+    loadSetting((settings) => {
+      console.log(settings);
+      const format = settings[2][1];
+      copyUrl(format);
+    });
     // chrome.extension.sendRequest(
     //     {
     //         keystr: keystr,

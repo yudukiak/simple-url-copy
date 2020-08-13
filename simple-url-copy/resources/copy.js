@@ -1,3 +1,21 @@
+const copyUrl = (format) => {
+  const url = document.URL;
+  const title = document.title;
+  // Process AmazonURL
+  // url = extractAmazonUrl(url);
+
+  const text = format
+    .replace(/\\n/g, '\n')
+    .replace(/\\r/g, '\r')
+    .replace(/\\f/g, '\f')
+    .replace(/\\t/g, '\t')
+    .replace(/{title}/g, title)
+    .replace(/{url}/g, url);
+  copyToClipBoard(text);
+  // copyText(text);
+  // showCopied();
+};
+
 function copyToClipBoard(text)
 {
     var input=document.createElement("textarea");
@@ -11,7 +29,7 @@ function copyToClipBoard(text)
 
 const formatByCommand = (command) => {
   switch(command) {
-    case 'scrapbox_style_copy': return '[${title} ${URL}]';
+    case 'scrapbox_style_copy' : return '[${title} ${URL}]';;
     case 'markdown_style_copy': return '[${title}](${URL})';
     case 'breaked_style_copy': return '${title}\n${URL}';
     default: return '${title} ${URL}';
