@@ -5,7 +5,7 @@ var tooltip = {
 
     create: function () {
         this.element = document.createElement('div');
-        this.element.setAttribute('style', 'position: fixed; top: 5px; left: 5px; width: calc(100%-10px); text-align: center; min-height: 1.5em; z-index: 9999;');
+        this.element.setAttribute('style', 'position: fixed; top: 5px; left: 5px; text-align: center; min-height: 1.5em; z-index: 9999;');
 
         var div = document.createElement('div');
         div.setAttribute('style', 'font: bold 13px "Gill Sans", "Gill Sans MT", "Goudy Bookletter 1911", "Linux Libertine O", "Liberation Serif", Candara, serif; padding: 2px 15px; margin-top: 0; background: gray; border-color: white; color: white; text-align: center; border-left: 1px solid; border-right: 1px solid; border-bottom: 1px solid; border-top: 0; border-radius: 0 0 5px 5px; display: inline-block; line-height: 100%;');
@@ -19,11 +19,13 @@ var tooltip = {
             this.visible = true;
             document.body.appendChild(this.element);
         }
-        this.timer = setTimeout(function () { tooltip.hide(); }, time);
+        this.element.style.opacity = 1;
+        this.timer = setTimeout(function () { tooltip.hide(); }, 600);
     },
 
     hide: function () {
-        document.body.removeChild(this.element);
+        this.element.style.transition = '0.8s';
+        this.element.style.opacity = 0;
         this.visible = false;
     },
 
@@ -33,9 +35,6 @@ var tooltip = {
 };
 
 var cmdKeys = {}; // keys pushed with command key
-const onRequest = () => {
-  console.log(`${document.title} - ${document.URL}`);
-};
 function isValidElem(elem)
 {
     var invalid_elems = [
