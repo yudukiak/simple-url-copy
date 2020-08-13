@@ -1,5 +1,5 @@
 const copyUrl = (format) => {
-  const url = document.URL;
+  const url = extractAmazonUrl(document.URL);
   const title = document.title;
   let decoded = url;
   try {
@@ -7,8 +7,6 @@ const copyUrl = (format) => {
   } catch (e) { // catches a malformed URI
     console.error(e);
   }
-  // Process AmazonURL
-  // url = extractAmazonUrl(url);
 
   const text = format
     .replace(/\\n/g, '\n')

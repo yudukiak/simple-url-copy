@@ -19,7 +19,14 @@
     "open_in_tab": false
   },
   "content_scripts": [ {
-     "js": [ "resources/resources.js", "resources/setting.js", "resources/copy.js", "resources/keyboard.js", "resources/content.js" ],
+     "js": [
+       "resources/resources.js",
+       "resources/format.js",
+       "resources/setting.js",
+       "resources/copy.js",
+       "resources/keyboard.js",
+       "resources/content.js"
+     ],
      "matches": [ "http://*/*", "https://*/*" ]
   } ],
   "background": {
