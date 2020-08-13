@@ -1,33 +1,3 @@
-function getDefaultShortcuts()
-{
-    return [
-	{
-	    enable    : 'true',
-	    format    : '${title} ${URL}',
-	    shortener : 'goo.gl',
-	    key       : 'C'
-	},
-	{
-	    enable    : 'true',
-	    format    : '<a href="${URL}">${title}</a>',
-	    shortener : 'goo.gl',
-	    key       : 'V'
-	}
-    ];
-}
-
-function getDefaultShortcut()
-{
-    var shortcut = getDefaultShortcuts()[0];
-    shortcut.enable = 'false';
-    return shortcut;
-}
-
-function setDefaultShortcuts()
-{
-    setShortcuts(getDefaultShortcuts());
-}
-
 function getShortcuts()
 {
   // TODO: load
@@ -92,16 +62,6 @@ function getEnabledFormatByKey(keystr)
 	return false;
 }
 
-function getShortenerByKey(keystr)
-{
-    var index = getEnabledShortcutIndexByKey(keystr);
-
-    if (index !== false)
-	return getShortcutItem(index, 'shortener');
-    else
-	return false;
-}
-
 function setShortcuts(shortcuts)
 {
     if (!supportsLocalStorage())
@@ -159,61 +119,6 @@ function deleteShortcut(index)
     var s = getShortcuts();
     s.splice(index, 1);
     setShortcuts(s);
-}
-
-function getDefaultShortenersSetting()
-{
-    return {
-	'goo.gl': {
-	    status: 'noaccess',
-	    message: 'No Access Granted',
-	    site: 'http://goo.gl/',
-	    url: 'https://www.googleapis.com/urlshortener/v1/url',
-	    tokens: {}
-	}
-    };
-}
-
-function getShortenersSetting()
-{
-    var s = localStorage.getItem('shorteners');
-
-    if (s == null)
-	s = getDefaultShortenersSetting();
-    else
-	s = JSON.parse(s);
-
-    return s;
-}
-
-function setShortenersSetting(setting)
-{
-    if (!supportsLocalStorage())
-	return false;
-
-    localStorage.setItem('shorteners', JSON.stringify(setting));
-}
-
-
-function getShortenerItem(shortener, name)
-{
-    var s = getShortenersSetting();
-
-    if (!s[shortener])
-	return null;
-
-    return s[shortener][name];
-}
-
-function setShortenerItem(shortener, name, value)
-{
-    var s = getShortenersSetting();
-
-    if (!s[shortener])
-	return null;
-
-    s[shortener][name] = value;
-    setShortenersSetting(s);
 }
 
 function supportsLocalStorage()
