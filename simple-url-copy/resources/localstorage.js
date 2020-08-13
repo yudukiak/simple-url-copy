@@ -30,14 +30,17 @@ function setDefaultShortcuts()
 
 function getShortcuts()
 {
-    var s = localStorage.getItem('shortcuts');
-
-    if (s == null)
-	s = getDefaultShortcuts();
-    else
-	s = JSON.parse(s);
-
-    return s;
+  // TODO: load
+  const s = DEFAULT_SETTING.map(config => {
+    return {
+      enable: `${config[2]}`,
+      format: config[1],
+      shortener: 'goo.gl',
+      key: config[3]
+    };
+  });
+  console.log(s);
+  return s;
 }
 
 function getNumberOfShortcuts()

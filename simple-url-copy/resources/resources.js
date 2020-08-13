@@ -1,13 +1,13 @@
 const DEFAULT_SETTING = [
-  ["Simple (Title URL)", "{title} {url}", true],
-  ["Simple /w Breakline", "{title}\\n{url}", true],
-  ["Bold /w Breakline", "**{title}**\\n{url}", false],
-  ["URL Only", "{url}", true],
-  ["Title Only", "{title}", false],
-  ["Markdown Style", "[{title}]({url})", true],
-  ["Backlog Style", "[[{title}:{url}]]", true],
-  ["Textile Style", "\"{title}\":{url}", false],
-  ["Org mode Style", "[[{url}][{title}]]", false],
+  ["Simple (Title URL)", "{title} {url}", true, 'C'],
+  ["Simple /w Breakline", "{title}\\n{url}", false, 'V'],
+  ["Bold /w Breakline", "**{title}** {url}", true, 'V'],
+  ["URL Only", "{url}", true, null],
+  ["Title Only", "{title}", false, null],
+  ["Markdown Style", "[{title}]({url})", true, null],
+  ["Backlog Style", "[[{title}:{url}]]", true, null],
+  ["Textile Style", "\"{title}\":{url}", false, null],
+  ["Org mode Style", "[[{url}][{title}]]", false, null],
 ];
 
 const AMAZON_HOST = 'www.amazon.co.jp';
