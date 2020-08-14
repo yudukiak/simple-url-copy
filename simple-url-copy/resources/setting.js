@@ -4,9 +4,9 @@ const loadSetting = (callback) => {
   chrome.storage.local.get(value => {
     const s = getSettingAry(value['simpleUrlCopy']).map(config => {
       return {
-        enable: `${config[2]}`,
+        title: config[0],
         format: config[1],
-        shortener: 'goo.gl',
+        enable: config[2],
         key: config[3]
       };
     });
@@ -16,6 +16,6 @@ const loadSetting = (callback) => {
 
 const getSettingByKey = (keystr, callback) => {
   loadSetting(settings => {
-    callback(settings.find(s => s.key==keystr && s.enable=='true'))
+    callback(settings.find(s => s.key==keystr && s.enable))
   });
 }

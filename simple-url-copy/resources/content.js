@@ -22,7 +22,7 @@ const toast = {
 };
 
 loadSetting(settings => {
-  for (let setting of settings) {
+  for (let setting of settings.filter(s => s.enable)) {
     Mousetrap.bind(setting.key, () => {
       const text = copyUrl(setting.format);
       toast.show(`Copied!: ${text}`);
