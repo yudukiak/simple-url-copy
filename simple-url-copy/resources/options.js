@@ -7,10 +7,6 @@ const escapeHtml = str => {
     .replace(/'/g, '&#39;');
   return rep;
 }
-const getSettingAry = ary => {
-  if (ary == null || ary.length === 0) return DEFAULT_SETTING;
-  return ary;
-}
 const getTbodyHtml = ary => {
   const tdHtml = ary.map(val => {
     const label = escapeHtml(val[0]);
@@ -41,9 +37,7 @@ const setSortable = _ => {
   });
 }
 
-chrome.storage.local.get(value => {
-  const valueData = value['simpleUrlCopy'];
-  const settingAry = getSettingAry(valueData);
+loadSettingsArray(settingAry => {
   const tbodyHtml = getTbodyHtml(settingAry);
   const tableElement = document.querySelector('#menu > table');
   tableElement.innerHTML = tbodyHtml;
@@ -95,9 +89,7 @@ document.getElementById('save').onclick = _ => {
     }
   }).then(result => {
     if (!result.value) return;
-    chrome.storage.local.set({
-      'simpleUrlCopy': tableRowsAry
-    }, () => {
+    saveSettings(tableRowsAry, () => {
       setMakeButtonColor('');
       Swal.fire({
         title: '設定の保存が完了しました',
@@ -107,9 +99,7 @@ document.getElementById('save').onclick = _ => {
   });
 };
 document.getElementById('export').onclick = _ => {
-  chrome.storage.local.get(value => {
-    const valueData = value['simpleUrlCopy'];
-    const settingAry = getSettingAry(valueData);
+  loadSettingsArray(settingAry => {
     const textarea = document.createElement('textarea');
     textarea.textContent = JSON.stringify(settingAry);
     const body = document.getElementsByTagName('body')[0];
