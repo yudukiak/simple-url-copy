@@ -1,4 +1,4 @@
-Simple URL Copy [F]
+Custom URL Copy
 =====
 
 ![demo](https://raw.githubusercontent.com/micelle/simple-url-copy/master/assets/how_to_use.gif)
@@ -12,7 +12,7 @@ URLをコピーするのに使えるChromeの拡張です。
 [![YouTube](https://img.youtube.com/vi/Gsq4jFGd-BY/mqdefault.jpg)](https://www.youtube.com/watch?v=Gsq4jFGd-BY)
 
 ## インストール
-[Simple URL Copy [F] - Chrome ウェブストア](https://chrome.google.com/webstore/detail/simple-url-copy/kmkdfdfknlkjbmgdenhpeckpdafojnfo)
+[Custom URL Copy - Chrome ウェブストア](https://chrome.google.com/webstore/detail/simple-url-copy/kmkdfdfknlkjbmgdenhpeckpdafojnfo)
 
 ## 特徴
 - Simple and Fast
@@ -38,7 +38,7 @@ URLをコピーするのに使えるChromeの拡張です。
 | [Org mode](https://orgmode.org/) Style    | `[[{url}][{title}]]` | 初期は非表示 |
 
 ### フォーマットの追加方法
-- 「Simple URL Copy」のウィンドウ内にある「Option」、もしくはアイコン右クリックから表示される「オプション」をクリックすることでOptionを開けます  
+- 「Custom URL Copy」のウィンドウ内にある「Option」、もしくはアイコン右クリックから表示される「オプション」をクリックすることでOptionを開けます  
   ![option](https://raw.githubusercontent.com/micelle/simple-url-copy/master/assets/how_to_option.jpg)
 - 「RESET」ボタン  
   フォーマットの設定を初期化します。初期化後、設定が保存されますのでご注意ください。
