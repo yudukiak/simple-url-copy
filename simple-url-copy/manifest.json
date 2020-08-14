@@ -2,7 +2,7 @@
   "name": "Custom URL Copy",
   "description": "A tool that helps you to copy url and title.",
   "author": "@koyopro",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "manifest_version": 2,
   "icons": {
     "16": "icons/16.png",
@@ -20,11 +20,11 @@
   },
   "content_scripts": [ {
      "js": [
+       "library/mousetrap.min.js",
        "resources/resources.js",
        "resources/format.js",
        "resources/setting.js",
        "resources/copy.js",
-       "resources/keyboard.js",
        "resources/content.js"
      ],
      "matches": [ "http://*/*", "https://*/*" ]

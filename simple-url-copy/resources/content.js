@@ -30,90 +30,11 @@ const tooltip = {
     }
 };
 
-var cmdKeys = {}; // keys pushed with command key
-function isValidElem(elem)
-{
-    var invalid_elems = [
-        'input',
-        'textarea',
-        'select',
-        'object'
-    ];
-
-    var name = elem.tagName.toLowerCase();
-    for (var i = 0; i < invalid_elems.length; i++)
-        if (name == invalid_elems[i])
-            return false;
-    return true;
-}
-
-function keyDownEventListener(e)
-{
-    if (tooltip.visible || !isValidElem(e.target))
-        return;
-
-    var key = e.which;
-
-    if (!(isAlphaNum(key) || isSpecialKey(key)))
-        return;
-
-    // e.metaKey is correct only on keydown event
-    if (e.metaKey && !cmdKeys.which) {
-        cmdKeys.which = key;
-        cmdKeys.ctrlKey = e.ctrlKey;
-        cmdKeys.shiftKey = e.shiftKey;
-        cmdKeys.altKey = e.altKey;
-        cmdKeys.metaKey = true;
-    }
-}
-
-function keyUpEventListener(e)
-{
-    if (tooltip.visible || !isValidElem(e.target))
-        return;
-
-    var selection = window.getSelection();
-    var text = selection ? selection.toString() : '';
-
-    var keys = {
-        which: null,
-        ctrlKey: null,
-        shiftKey: null,
-        altKey: null,
-        metaKey: null
-    };
-
-    if (cmdKeys.which)
-        keys = cmdKeys;
-    else
-        for (var i in keys)
-            keys[i] = e[i];
-
-    cmdKeys = {};
-
-    var keystr = keyCodeToString(
-        keys.which,
-        keys.ctrlKey,
-        keys.shiftKey,
-        keys.altKey,
-        keys.metaKey
-    );
-
-    if (text != '')
-        if (keystr == 'COMMAND + C' ||
-            keystr == 'CTRL + C')
-            return;
-
-    console.log(`key: ${keystr}, text: ${text}`);
-    getSettingByKey(keystr, setting => {
-      if (setting) {
-        const text = copyUrl(setting.format);
-        tooltip.show(`Copied!: ${text}`);
-      }
+loadSetting(settings => {
+  for (let setting of settings) {
+    Mousetrap.bind(setting.key, () => {
+      const text = copyUrl(setting.format);
+      tooltip.show(`Copied!: ${text}`);
     });
-}
-const init = () => {
-  window.addEventListener("keydown", keyDownEventListener);
-  window.addEventListener("keyup", keyUpEventListener);
-};
-init();
+  }
+});
