@@ -1,0 +1,18 @@
+div.toast {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  padding: 5px 15px;
+  background: #00000088;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 9999;
+  transition: 0s;
+  opacity: 1;
+}
+
+div.toast.hide {
+  transition: 0.8s;
+  opacity: 0;
+}
