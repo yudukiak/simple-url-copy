@@ -21,11 +21,15 @@ const toast = {
     }
 };
 
-loadSettings(settings => {
-  for (let setting of settings.filter(s => s.enable && s.key)) {
-    Mousetrap.bind(setting.key, () => {
-      const text = copyUrl(setting.format);
-      toast.show(`Copied!: ${text}`);
-    });
-  }
-});
+const init = () => {
+  loadSettings(settings => {
+    for (let setting of settings.filter(s => s.enable && s.key)) {
+      hotkeys(setting.key, (e,h) => {
+        const text = copyUrl(setting.format);
+        toast.show(`Copied!: ${text}`);
+      });
+    }
+  });
+};
+
+setTimeout(init, 500);
