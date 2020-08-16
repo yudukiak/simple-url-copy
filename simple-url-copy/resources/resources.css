@@ -79,12 +79,12 @@ header, footer, main {
 
 header {
   background-color: var(--grey-90);
-  padding: 20px;
+  padding: 5px 20px;
 }
 
 main {
   background-color: var(--grey-70);
-  padding: 20px;
+  padding: 5px 20px;
 }
 
 footer {
@@ -113,7 +113,7 @@ a:hover {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 button {
@@ -282,7 +282,7 @@ textarea:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 0;
+  margin: 5px 0 10px;
 }
 
 #menu button {
@@ -292,36 +292,15 @@ textarea:focus {
   white-space: nowrap;
 }
 
-#info {
-  display: flex;
-}
-
-#shortcutInfo {
-  width: 70%;
-}
-
-#shortcutInfo p {
-  padding: 5px 0;
-}
-
-#shortcutInfo p+p {
-  padding-top: 0;
-}
-
 #copied {
-  background-color: var(--grey-30);
-  border-radius: 4px;
-  color: var(--grey-90);
-  font-size: 14px;
-  height: 32px;
-  line-height: 16px;
-  margin: 15px 0 0 0;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 12px;
   opacity: 1;
-  padding: 9px;
-  text-align: center;
   transition-property: opacity;
   transition-duration: 0s;
-  width: 30%;
 }
 
 #copied.fadeout {
