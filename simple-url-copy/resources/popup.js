@@ -17,6 +17,9 @@ const extractAmazonUrl = rawUrl => {
     } else if (url.pathname.match(/\/gp\/aw\/d\/[A-Za-z0-9]/)) {
       newUrl = url.origin + url.pathname.replace(/(^\S+)?(\/gp\/aw\/d\/[A-Za-z0-9]{10})(.*)/, '$2');
       return newUrl;
+    } else if (url.pathname.match(/\/gp\/video\/detail\/[A-Za-z0-9]/)) {
+      newUrl = url.origin + url.pathname.replace(/(^\S+)?(\/gp\/video\/detail\/[A-Za-z0-9]{10})(.*)/, '$2');
+      return newUrl;
     } else {
       return rawUrl;
     }
