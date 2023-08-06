@@ -6,26 +6,20 @@ const copyText = text => {
 }
 
 const extractAmazonUrl = rawUrl => {
-  const url = new URL(rawUrl);
-  if (url.host == AMAZON_HOST) {
-    if (url.pathname.match(/\/dp\/[A-Za-z0-9]/)) {
-      newUrl = url.origin + url.pathname.replace(/(^\S+)(\/dp\/[A-Za-z0-9]{10})(.*)/, '$2');
-      return newUrl;
-    } else if (url.pathname.match(/\/gp\/product\/[A-Za-z0-9]/)) {
-      newUrl = url.origin + url.pathname.replace(/(^\S+)?(\/gp\/product\/[A-Za-z0-9]{10})(.*)/, '$2');
-      return newUrl;
-    } else if (url.pathname.match(/\/gp\/aw\/d\/[A-Za-z0-9]/)) {
-      newUrl = url.origin + url.pathname.replace(/(^\S+)?(\/gp\/aw\/d\/[A-Za-z0-9]{10})(.*)/, '$2');
-      return newUrl;
-    } else if (url.pathname.match(/\/gp\/video\/detail\/[A-Za-z0-9]/)) {
-      newUrl = url.origin + url.pathname.replace(/(^\S+)?(\/gp\/video\/detail\/[A-Za-z0-9]{10})(.*)/, '$2');
-      return newUrl;
-    } else {
-      return rawUrl;
-    }
-  } else {
-    return rawUrl;
-  }
+  const url = new URL(rawUrl)
+  if (url.host != AMAZON_HOST) return rawUrl
+  const urlOrigin = url.origin
+  const urlPathname = url.pathname
+  const urlMatch_dp = urlPathname.match(/\/dp\/[A-Za-z0-9]{10}/)
+  const urlMatch_gp_product = urlPathname.match(/\/gp\/product\/[A-Za-z0-9]{10}/)
+  const urlMatch_gp_aw_d = urlPathname.match(/\/gp\/aw\/d\/[A-Za-z0-9]{10}/)
+  const urlMatch_gp_video_detail = urlPathname.match(/\/gp\/video\/detail\/[A-Za-z0-9]{10}/)
+  const newUrl =
+    (urlMatch_dp) ? `${urlOrigin}${urlMatch_dp[0]}` :
+      (urlMatch_gp_product) ? `${urlOrigin}${urlMatch_gp_product[0]}` :
+        (urlMatch_gp_aw_d) ? `${urlOrigin}${urlMatch_gp_aw_d[0]}` :
+          (urlMatch_gp_video_detail) ? `${urlOrigin}${urlMatch_gp_video_detail[0]}` : rawUrl
+  return newUrl
 }
 
 const showCopied = _ => {
