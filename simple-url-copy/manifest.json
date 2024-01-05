@@ -2,7 +2,7 @@
   "name": "Simple URL Copy [F]",
   "description": "A tool that helps you to copy url.",
   "author": "@ikedaosushi, Misoni, and yudukiak(micelle)",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "manifest_version": 3,
   "icons": {
     "16": "icons/16.png",
