@@ -47,15 +47,24 @@ const copyUrl = menuType => {
     // Process AmazonURL
     url = extractAmazonUrl(url);
 
-    const text = menuType
-      .replace(/\\n/g, '\n')
-      .replace(/\\r/g, '\r')
-      .replace(/\\f/g, '\f')
-      .replace(/\\t/g, '\t')
-      .replace(/{title}/g, title)
-      .replace(/{url}/g, url);
-    copyText(text);
-    showCopied();
+    // 設定画面などで発生する Could not establish connection. Receiving end does not exist. の対策
+    if (!/^https?:\/\//.test(url)) return null
+
+    // 選択中のテキストを取得
+    chrome.tabs.sendMessage(tabs[0].id, { data: 'getSelection' })
+      .then(selectionText => {
+        const text = menuType
+          .replace(/\\n/g, '\n')
+          .replace(/\\r/g, '\r')
+          .replace(/\\f/g, '\f')
+          .replace(/\\t/g, '\t')
+          .replace(/{title}/g, title)
+          .replace(/{url}/g, url)
+          .replace(/{copy}/g, selectionText)
+        copyText(text)
+        showCopied()
+      })
+      .catch( error => console.log('error:', error))
   })
 }
 

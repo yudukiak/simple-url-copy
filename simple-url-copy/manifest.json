@@ -27,6 +27,10 @@
       "description": "Opens popup.html"
     }
   },
+  "content_scripts": [{
+    "matches": ["http://*/*","https://*/*"],
+    "js": ["resources/content.js"]
+  }],
   "permissions": [
     "storage",
     "tabs",
