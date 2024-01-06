@@ -32,9 +32,9 @@
     "js": ["resources/content.js"]
   }],
   "permissions": [
-    "storage",
     "activeTab",
-    "clipboardWrite"
+    "clipboardWrite",
+    "storage"
   ],
   "content_security_policy": {
     "default-src": "self"
