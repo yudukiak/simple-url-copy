@@ -39,13 +39,29 @@ const setSortable = _ => {
   });
 }
 
-chrome.storage.local.get(value => {
+chrome.storage.sync.get(value => {
   const valueData = value['simpleUrlCopy'];
-  const settingAry = getSettingAry(valueData);
-  const tbodyHtml = getTbodyHtml(settingAry);
-  const tableElement = document.querySelector('#menu > table');
-  tableElement.innerHTML = tbodyHtml;
-  setSortable();
+  // ローカル上にしかない場合
+  if (valueData == null || valueData.length === 0) {
+    chrome.storage.local.get(localValue => {
+      const localValueData = localValue['simpleUrlCopy'];
+      const localSettingAry = getSettingAry(localValueData);
+      const localTbodyHtml = getTbodyHtml(localSettingAry);
+      const tableElement = document.querySelector('#menu > table');
+      tableElement.innerHTML = localTbodyHtml;
+      setSortable();
+      // オンライン上に保存する
+      chrome.storage.sync.set({'simpleUrlCopy': localSettingAry})
+    });
+  }
+  // オンライン上にある場合
+  else {
+    const settingAry = getSettingAry(valueData);
+    const tbodyHtml = getTbodyHtml(settingAry);
+    const tableElement = document.querySelector('#menu > table');
+    tableElement.innerHTML = tbodyHtml;
+    setSortable();
+  }
 });
 
 document.getElementById('reset').onclick = _ => {
@@ -92,7 +108,7 @@ document.getElementById('save').onclick = _ => {
     }
   }).then(result => {
     if (!result.value) return;
-    chrome.storage.local.set({
+    chrome.storage.sync.set({
       'simpleUrlCopy': tableRowsAry
     }, () => {
       setMakeButtonColor('');
@@ -104,7 +120,7 @@ document.getElementById('save').onclick = _ => {
   });
 };
 document.getElementById('export').onclick = _ => {
-  chrome.storage.local.get(value => {
+  chrome.storage.sync.get(value => {
     const valueData = value['simpleUrlCopy'];
     const settingAry = getSettingAry(valueData);
     const textarea = document.createElement('textarea');
