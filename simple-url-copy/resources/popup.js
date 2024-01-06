@@ -44,11 +44,16 @@ const copyUrl = menuType => {
     let url = tabs[0].url;
     const title = tabs[0].title;
 
+    // 設定画面などで発生するエラーの対策
+    // 1. Could not establish connection. Receiving end does not exist.
+    // 2. Error handling response: TypeError: Failed to construct 'URL': Invalid URL
+    if (!/^https?:\/\//.test(url)) {
+      console.log('tabs', tabs)
+      return null
+    }
+
     // Process AmazonURL
     url = extractAmazonUrl(url);
-
-    // 設定画面などで発生する Could not establish connection. Receiving end does not exist. の対策
-    if (!/^https?:\/\//.test(url)) return null
 
     // 選択中のテキストを取得
     chrome.tabs.sendMessage(tabs[0].id, { command: 'getSelection' })
