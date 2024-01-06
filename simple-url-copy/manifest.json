@@ -33,7 +33,7 @@
   }],
   "permissions": [
     "storage",
-    "tabs",
+    "activeTab",
     "clipboardWrite"
   ],
   "content_security_policy": {
