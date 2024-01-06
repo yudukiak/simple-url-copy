@@ -51,7 +51,7 @@ const copyUrl = menuType => {
     if (!/^https?:\/\//.test(url)) return null
 
     // 選択中のテキストを取得
-    chrome.tabs.sendMessage(tabs[0].id, { data: 'getSelection' })
+    chrome.tabs.sendMessage(tabs[0].id, { command: 'getSelection' })
       .then(selectionText => {
         const text = menuType
           .replace(/\\n/g, '\n')

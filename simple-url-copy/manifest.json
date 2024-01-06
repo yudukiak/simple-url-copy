@@ -18,6 +18,9 @@
     "page": "options.html",
     "open_in_tab": false
   },
+  "background": {
+    "service_worker": "resources/background.js"
+  },
   "commands": {
     "_execute_action": {
       "suggested_key": {
@@ -34,6 +37,7 @@
   "permissions": [
     "activeTab",
     "clipboardWrite",
+    "contextMenus",
     "storage"
   ],
   "content_security_policy": {

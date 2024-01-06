@@ -1,9 +1,13 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  const data = message.data
-  if (data === 'getSelection') {
-    // 選択中のテキストを取得
+  const command = message.command
+  // 選択中のテキストを取得
+  if (command === 'getSelection') {
     const selectionText = window.getSelection().toString()
-    // 返却
     sendResponse(selectionText)
+    return selectionText
+  }
+  // クリップボードに保存
+  if (command === 'copyText') {
+    navigator.clipboard.writeText(message.text).then(_ => {}, _ => {})
   }
 })
