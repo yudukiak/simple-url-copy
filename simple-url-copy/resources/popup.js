@@ -113,12 +113,28 @@ const getButtonHtml = ary => {
   }).join('');
   return buttonHtml;
 }
-chrome.storage.local.get(value => {
+chrome.storage.sync.get(value => {
   const valueData = value['simpleUrlCopy'];
-  const settingAry = getSettingAry(valueData);
-  const buttonHtml = getButtonHtml(settingAry);
-  const menuElement = document.querySelector('#menu');
-  menuElement.innerHTML = buttonHtml;
+  // ローカル上にしかない場合
+  if (valueData == null || valueData.length === 0) {
+    chrome.storage.local.get(localValue => {
+      const localValueData = localValue['simpleUrlCopy'];
+      const localSettingAry = getSettingAry(localValueData);
+      const buttonHtml = getButtonHtml(localSettingAry);
+      const menuElement = document.querySelector('#menu');
+      menuElement.innerHTML = buttonHtml;
+      // オンライン上に保存する
+      chrome.storage.sync.set({'simpleUrlCopy': localSettingAry})
+    });
+  }
+  // オンライン上にある場合
+  else {
+    const valueData = value['simpleUrlCopy'];
+    const settingAry = getSettingAry(valueData);
+    const buttonHtml = getButtonHtml(settingAry);
+    const menuElement = document.querySelector('#menu');
+    menuElement.innerHTML = buttonHtml;
+  }
 });
 document.querySelector('#menu').addEventListener('click', e => {
   const target = e.target || e.srcElement;
