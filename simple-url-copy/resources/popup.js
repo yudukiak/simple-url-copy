@@ -43,14 +43,6 @@ const copyUrl = menuType => {
     let url = tabs[0].url;
     const title = tabs[0].title;
 
-    // 設定画面などで発生するエラーの対策
-    // 1. Could not establish connection. Receiving end does not exist.
-    // 2. Error handling response: TypeError: Failed to construct 'URL': Invalid URL
-    if (!/^https?:\/\//.test(url)) {
-      console.log('tabs', tabs)
-      return null
-    }
-
     // Process AmazonURL
     url = extractAmazonUrl(url);
 
@@ -68,7 +60,22 @@ const copyUrl = menuType => {
         copyText(text)
         showCopied()
       })
-      .catch( error => console.log('error:', error))
+      .catch( error => {
+        // ストアや設定画面などエラーを発するページの処理
+        // 1. Could not establish connection. Receiving end does not exist.
+        // 2. Error handling response: TypeError: Failed to construct 'URL': Invalid URL
+        const text = menuType
+          .replace(/\\n/g, '\n')
+          .replace(/\\r/g, '\r')
+          .replace(/\\f/g, '\f')
+          .replace(/\\t/g, '\t')
+          .replace(/{title}/g, title)
+          .replace(/{url}/g, url)
+          .replace(/{copy}/g, '')
+        copyText(text)
+        showCopied()
+        console.log('error:', error)
+      })
   })
 }
 
