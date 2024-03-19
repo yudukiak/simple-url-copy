@@ -74,12 +74,26 @@ const copyUrl = menuType => {
 }
 
 const onInit = _ => {
-  chrome.storage.local.get(value => {
+  chrome.storage.sync.get(value => {
     const valueData = value['simpleUrlCopy'];
-    const settingAry = getSettingAry(valueData);
-    const menuType = settingAry[0][1];
-    copyUrl(menuType);
-  });
+    // ローカル上にしかない場合
+    if (valueData == null || valueData.length === 0) {
+      chrome.storage.local.get(value => {
+        const localValueData = value['simpleUrlCopy'];
+        const localSettingAry = getSettingAry(localValueData);
+        const localMenuType = localSettingAry[0][1];
+        copyUrl(localMenuType);
+        // オンライン上に保存する
+        chrome.storage.sync.set({'simpleUrlCopy': localSettingAry})
+      });
+    }
+    // オンライン上にある場合
+    else {
+      const settingAry = getSettingAry(valueData);
+      const menuType = settingAry[0][1];
+      copyUrl(menuType);
+    }
+  })
 }
 
 const onClickCopyMenu = elm => {
@@ -129,7 +143,6 @@ chrome.storage.sync.get(value => {
   }
   // オンライン上にある場合
   else {
-    const valueData = value['simpleUrlCopy'];
     const settingAry = getSettingAry(valueData);
     const buttonHtml = getButtonHtml(settingAry);
     const menuElement = document.querySelector('#menu');
