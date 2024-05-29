@@ -60,7 +60,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   let url = tab.url;
   const title = tab.title;
   // Process AmazonURL
-  url = extractAmazonUrl(url);
+    url = (!/^https?:\/\//.test(url)) ? extractAmazonUrl(url) : url
   // 設定画面などで発生する Could not establish connection. Receiving end does not exist. の対策
   if (!/^https?:\/\//.test(url)) return null
   // 選択中のテキストを取得
