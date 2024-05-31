@@ -44,7 +44,7 @@ const copyUrl = menuType => {
     const title = tabs[0].title;
 
     // Process AmazonURL
-    url = (!/^https?:\/\//.test(url)) ? extractAmazonUrl(url) : url
+    url = (/^https?:\/\//.test(url)) ? extractAmazonUrl(url) : url
 
     // 選択中のテキストを取得
     chrome.tabs.sendMessage(tabs[0].id, { command: 'getSelection' })
